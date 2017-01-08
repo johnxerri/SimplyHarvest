@@ -149,7 +149,7 @@
 								console.log(nbrClasse);
 
 								// on affiche la reponse
-								console.log('il y a ' +nbrClasse+ ' objet(s) recurent avec la classe ' +test+ '!');
+								console.log('il y a ' +nbrClasse+ ' objet(s) recurent avec la classe ' +test+ '! ');
 								i++;
 
 							}
