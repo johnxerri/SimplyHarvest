@@ -15,7 +15,7 @@
 		<!-- Row haut -->
 		<section class="insertionLink">
 
-			<form>
+			<form method="post">
 
 				<input type="text" name="link" placeholder="Coller le lien de la page a afficher .." />
 				<input type="submit" name="valider" value="ok" />
@@ -24,29 +24,34 @@
 
 		</section>
 
-		<!-- Row milieu - colonne gauche -->
-		<section class="contenuToCheck">
+		<section>
 
-			<div class="annonces">
-				<h4 class="titre2">Lorem ipsum dolor sit amet <span>Annonce Premium</span></h4>
-				<a class="lien2" href="#" title="La réponse D" >Réponse D</a>
-				<p class="description2">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium</p>
-			</div>
+			<!-- Row milieu - colonne gauche -->
+			<article class="contenuToCheck">
 
-			<?php for ($i=0; $i < 3; $i++) { ?>
 				<div class="annonces">
-					<h4 class="titre">Lorem ipsum dolor sit amet <span>Annonce n. <?= $i; ?></span></h4>
-					<a class="lien" href="#" title="La réponse D" >Réponse D</a>
-					<p class="description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium</p>
+					<h2 class="titre2">Lorem ipsum dolor sit amet <span>Annonce Premium</span></h2>
+					<a class="lien2" href="#" title="La réponse D" >Réponse D</a>
+					<p class="description2">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium</p>
 				</div>
-			<?php } ?>
+
+				<?php $link = array('la reponse A', 'la reponse B', 'la reponse C'); ?>
+				<?php for ($i=0; $i < 3; $i++) { ?>
+					<div class="annonces">
+						<h2 class="titre">Lorem ipsum dolor sit amet <span>Annonce n. <?= $i; ?></span></h2>
+						<a class="lien" href="#" title="<?= $link[$i] ?>" ><?= $link[$i] ?></a>
+						<p class="description"><?= $i; ?> Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium</p>
+					</div>
+				<?php } ?>
+
+			</article>
+
+			<!-- Row milieu - colonne droite -->
+			<aside class="creationDesBlocks">
+				
+			</aside>
 
 		</section>
-
-		<!-- Row milieu - colonne droite -->
-		<aside class="creationDesBlocks">
-			
-		</aside>
 		
 			<!-- test (ici pour le moment) -->
 			<button id="resetBalise">Selctionner une autre balise</button>

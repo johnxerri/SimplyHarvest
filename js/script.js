@@ -8,7 +8,7 @@ $(document).ready(function(){
 		$('form').submit(function(event){
 			event.preventDefault();
 
-			// On recuoere la value de l input name='link'
+			// On recupere la value de l input name='link'
 			var lienAOuvrir = $("input[name='link']").val();
 
 			// $('[name="contenuToCheck"]').attr('src','lienAOuvrir');
@@ -29,18 +29,32 @@ $(document).ready(function(){
 
 		});
 
+
 	/**
 	*	Fonction de recuperation des informations au click
 	*/
 
 		function clickOnBtn(balise){
 
-			$(balise).click(function(){
+			/**
+			*	Effet visuel pour le survol des balises
+			*/
+
+			$( balise ).hover(function() {
+			    $( this ).addClass('baliseHover');
+			  }, function() {
+			    $( this ).removeClass('baliseHover');
+			  }
+			);
+
+			$( balise ).click(function(){
 
 				if (i == 0) {
 
 					// on recupere la class du click
-					var test = $(this).attr('class');
+					var test = $( this ).attr('class');
+
+					test = test.replace(' baliseHover', '');
 
 					// ajout de la couleur pour le visuelle du click
 					$('.'+test).addClass('baliseSelection');
@@ -53,7 +67,15 @@ $(document).ready(function(){
 					// on compte l'occurence
 					var nbrClasse	= $('.contenuToCheck').find('.'+test).length; 
 
-					console.log(nbrClasse);
+					// on cueille et on stock le contenu ;)
+					var tableauTextContenu = [];
+					for (var j = 0; j < nbrClasse; j++) 
+					{
+						var baliseTextContenu = $('.contenuToCheck .'+test ).eq(j).text();
+						tableauTextContenu.push( baliseTextContenu );
+					}
+
+					console.log(tableauTextContenu);
 
 					// on affiche la reponse
 					console.log('il y a ' +nbrClasse+ ' objet(s) recurent avec la classe ' +test+ '! ');
@@ -120,10 +142,11 @@ $(document).ready(function(){
 	*	Appel de la fonction utilisateur
 	*/
 
-		clickOnBtn('p');
+		clickOnBtn('.contenuToCheck p');
 		clickOnBtn('a');
 		clickOnBtn('span');
-		clickOnBtn('div');
-		clickOnBtn('H4');
+		clickOnBtn('.contenuToCheck div');
+		clickOnBtn('H2');
+
 
 });
