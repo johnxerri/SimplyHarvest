@@ -29,20 +29,22 @@
 			<!-- Row milieu - colonne gauche -->
 			<article class="contenuToCheck">
 
-				<div class="annonces">
-					<h2 class="titre2">Lorem ipsum dolor sit amet <span>Annonce Premium</span></h2>
-					<a class="lien2" href="#" title="La réponse D" >Réponse D</a>
-					<p class="description2">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium</p>
-				</div>
-
-				<?php $link = array('la reponse A', 'la reponse B', 'la reponse C'); ?>
-				<?php for ($i=0; $i < 3; $i++) { ?>
+				<!-- CONTENU FACTICE (ici le site s'affichera) -->
 					<div class="annonces">
-						<h2 class="titre">Lorem ipsum dolor sit amet <span>Annonce n. <?= $i; ?></span></h2>
-						<a class="lien" href="#" title="<?= $link[$i] ?>" ><?= $link[$i] ?></a>
-						<p class="description"><?= $i; ?> Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium</p>
+						<h2 class="titre2">Lorem ipsum dolor sit amet <span>Annonce Premium</span></h2>
+						<a class="lien2" href="#" title="La réponse D" >Réponse D</a>
+						<p class="description2">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium</p>
 					</div>
-				<?php } ?>
+
+					<?php $link = array('la reponse A', 'la reponse B', 'la reponse C'); ?>
+					<?php for ($i=0; $i < 3; $i++) { ?>
+						<div class="annonces">
+							<h2 class="titre">Lorem ipsum dolor sit amet <span>Annonce n. <?= $i; ?></span></h2>
+							<a class="lien" href="#" title="<?= $link[$i] ?>" ><?= $link[$i] ?></a>
+							<p class="description"><?= $i; ?> Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium</p>
+						</div>
+					<?php } ?>
+				<!-- END CONTENU FACTICE -->
 
 			</article>
 
