@@ -2,7 +2,7 @@
 
 <q>Ce README m'est uniquement destiné !!</q>
 
-<h2>Application d'extraction de contenu de sites Web :</h2>
+<h2>Application d'extraction de contenu de sites Web via une interface :</h2>
 
 <ul>
   <li>[✔] 1 - creer le conteneur d'affichage HTML.</li>
