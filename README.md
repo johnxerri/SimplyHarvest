@@ -1,6 +1,6 @@
 # SimplyHarvest
 
-<q>Ce Wiki m'est uniquement destiné !!</q>
+<q>Ce README m'est uniquement destiné !!</q>
 
 <h2>Application d'extraction de contenu de sites Web :</h2>
 
@@ -13,5 +13,5 @@
     </ul>
   </li>
   <li>[✘] 3 - Transformer le console.log() en .append pour avoir un visuel</li>
-  <li>[✘] 4 - Recuperer le contenu du .append et le transformer en .json<li>
+  <li>[✘] 4 - Recuperer le contenu du .append et le transformer en .json</li>
 </ul>
