@@ -1,6 +1,6 @@
 # SimplyHarvest
 
-<q>Ce README m'est uniquement destiné !!</q>
+<q>Ce README m'est uniquement destiné à mes heures perdu !!</q>
 
 <h2>Application d'extraction de contenu de sites Web via une interface :</h2>
 
