@@ -55,20 +55,20 @@ $(document).ready(function(){
 				if (i == 0) {
 
 					// on recupere la class du click
-					var test = $( this ).attr('class');
+					var className = $( this ).attr('class');
 
-					test = test.replace(' baliseHover', '');
+					className = className.replace(' baliseHover', '');
 
 					// ajout de la couleur pour le visuelle du click
-					$('.'+test).addClass('baliseSelection');
+					$('.'+className).addClass('baliseSelection');
 
 					// on efface a l affichage, la class du visuelle
-					test = test.replace(' class="baliseSelection"','');
-					test = test.replace(' baliseSelection','');
+					className = className.replace(' class="baliseSelection"','');
+					className = className.replace(' baliseSelection','');
 
 					
 					// on compte l'occurence
-					var nbrClasse	= $('.contenuToCheck').find('.'+test).length; 
+					var nbrClasse	= $('.contenuToCheck').find('.'+className).length; 
 
 					// on cueille et on stock le contenu ;)
 					var tableauHtmlContenu = [];
@@ -77,25 +77,31 @@ $(document).ready(function(){
 
 					for (var j = 0; j < nbrClasse; j++) 
 					{
+
 						// Recuperation du HTML
-						var baliseHtmlContenu = $('.contenuToCheck .'+test ).eq(j)[0].outerHTML;
+						var baliseHtmlContenu = $('.contenuToCheck .'+className ).eq(j)[0].outerHTML;
 						baliseHtmlContenu = baliseHtmlContenu.replace(' baliseHover', '');
 						baliseHtmlContenu = baliseHtmlContenu.replace(' class="baliseSelection"','');
 						baliseHtmlContenu = baliseHtmlContenu.replace(' baliseSelection','');
 						tableauHtmlContenu.push( baliseHtmlContenu );
+						// =====================================================
+
 						// Recuperation du Text
-						var baliseTextContenu = $('.contenuToCheck .'+test ).eq(j).text();
+						var baliseTextContenu = $('.contenuToCheck .'+className ).eq(j).text();
 						if (baliseTextContenu == '') {
 							baliseTextContenu = 'Aucun text';
 						}
 						tableauTextContenu.push( baliseTextContenu );
+						// =====================================================
+
 						// Recuperation du Href (lien page) ou Src (lien image)
 						if (balise == '.contenuToCheck img') {
-							var baliseHrefContenu = $('.contenuToCheck .'+test ).eq(j).attr('src');
+							var baliseHrefContenu = $('.contenuToCheck .'+className ).eq(j).attr('src');
 						} else {
-							var baliseHrefContenu = $('.contenuToCheck .'+test ).eq(j).attr('href');
+							var baliseHrefContenu = $('.contenuToCheck .'+className ).eq(j).attr('href');
 						}
 						tableauHrefContenu.push( baliseHrefContenu );
+						// =====================================================
 					}
 
 					// Superbe affichage des résultats dans la console :
@@ -110,62 +116,11 @@ $(document).ready(function(){
 					console.table(tableauHrefContenu);
 					console.log('%c----------------------------------','color:purple');
 					// on affiche la reponse
-					console.log('il y a ' +nbrClasse+ ' objet(s) recurent avec la classe ' +test+ '! ');
+					console.log('il y a ' +nbrClasse+ ' objet(s) recurent avec la classe ' +className+ '! ');
 					console.log('%c===============================================','color:blue');
 					i++;
 
 				}
-
-
-				// =================================================================
-				// if (i == 0) {
-
-				// 	var baliseSelection 	= $(this).addClass('baliseSelection');
-
-				// 	var baliseHtmlContenu 	= $(this)[0].outerHTML;
-				// 	var baliseTextContenu 	= $(this).text();
-				// 	var baliseAttrClass		= $(this).attr('class');
-				// 	var baliseAttrId		= $(this).attr('id');
-				// 	var baliseHref			= $(this).attr('href');
-
-				// 	baliseHtmlContenu = baliseHtmlContenu.replace(' class="baliseSelection"','');
-				// 	baliseHtmlContenu = baliseHtmlContenu.replace(' baliseSelection','');
-
-				// 	console.log('%c===============================================','color:blue');
-
-				// 	console.log('\nVous avez cliquer sur une balise <'+balise+'>[.]</'+balise+'>' +
-				// 		'\n\nhtml : ' + baliseHtmlContenu +
-				// 		'\n\ntext : ' + baliseTextContenu +'\n\n');
-
-				// 	// Affichage du HREF si la balise est a
-				// 	if (balise == 'a') {
-				// 		console.log('%c✔ href = '+baliseHref,'color:green');
-				// 	}
-
-				// 	// Affichage de la class css
-				// 	if(baliseAttrClass == null){
-				// 		console.log('%c✘ Aucune class css.','color:red');
-				// 	}else if(baliseAttrClass == 'baliseSelection'){
-				// 		console.log('%c✘ Aucune class css.','color:red');
-				// 	}else{
-				// 		baliseAttrClass = baliseAttrClass.replace('baliseSelection','');
-				// 		console.log('%c✔ class = '+baliseAttrClass,'color:green');
-				// 	}
-
-				// 	// Affichage de l'ID css
-				// 	if(baliseAttrId == null){
-				// 		console.log('%c✘ Aucun id css.','color:red');
-				// 	}else{
-				// 		console.log('%c✔ id = '+baliseAttrId,'color:green');
-				// 	}
-
-				// 	console.log('%c===============================================','color:blue');
-
-				// 	// console.log(baliseHtmlContenu + ' |||||| ' + baliseTextContenu + ' |||||| ' + baliseAttrClass + ' |||||| ' + baliseAttrId + ' |||||| ' + baliseHref);
-
-				// 	i++;
-
-				// }
 
 			});
 
