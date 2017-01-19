@@ -16,3 +16,5 @@
   <li>[✘] 4 - Recuperer le contenu du .append et le transformer en .json</li>
 </ul>
 ![alt tag](https://github.com/johnxerri/SimplyHarvest/blob/master/img/83.png)
+<h2>MaJ :</h2>
+![alt tag](https://github.com/johnxerri/SimplyHarvest/blob/master/img/84.png)
