@@ -41,8 +41,11 @@ $(document).ready(function(){
 			*/
 
 			$( balise ).hover(function() {
+				// Ajouter en ::after la class au survol (ou des infos : .class #id balise)
 			    $( this ).addClass('baliseHover');
 			  }, function() {
+			  	// faire une boucle pour compter le nbr de .baliseHover , si + de 1 remove .baliseHover du parent du
+			  	// dernier .baliseHover
 			    $( this ).removeClass('baliseHover');
 			  }
 			);
@@ -68,17 +71,47 @@ $(document).ready(function(){
 					var nbrClasse	= $('.contenuToCheck').find('.'+test).length; 
 
 					// on cueille et on stock le contenu ;)
+					var tableauHtmlContenu = [];
 					var tableauTextContenu = [];
+					var tableauHrefContenu = [];
+
 					for (var j = 0; j < nbrClasse; j++) 
 					{
+						// Recuperation du HTML
+						var baliseHtmlContenu = $('.contenuToCheck .'+test ).eq(j)[0].outerHTML;
+						baliseHtmlContenu = baliseHtmlContenu.replace(' baliseHover', '');
+						baliseHtmlContenu = baliseHtmlContenu.replace(' class="baliseSelection"','');
+						baliseHtmlContenu = baliseHtmlContenu.replace(' baliseSelection','');
+						tableauHtmlContenu.push( baliseHtmlContenu );
+						// Recuperation du Text
 						var baliseTextContenu = $('.contenuToCheck .'+test ).eq(j).text();
+						if (baliseTextContenu == '') {
+							baliseTextContenu = 'Aucun text';
+						}
 						tableauTextContenu.push( baliseTextContenu );
+						// Recuperation du Href (lien page) ou Src (lien image)
+						if (balise == '.contenuToCheck img') {
+							var baliseHrefContenu = $('.contenuToCheck .'+test ).eq(j).attr('src');
+						} else {
+							var baliseHrefContenu = $('.contenuToCheck .'+test ).eq(j).attr('href');
+						}
+						tableauHrefContenu.push( baliseHrefContenu );
 					}
 
-					console.log(tableauTextContenu);
-
+					// Superbe affichage des résultats dans la console :
+					console.log('%c===============================================','color:blue');
+					console.log('%cTableau HTML : ','color:green');
+					console.table(tableauHtmlContenu);
+					console.log('%c----------------------------------','color:purple');
+					console.log('%cTableau Text : ','color:green');
+					console.table(tableauTextContenu);
+					console.log('%c----------------------------------','color:purple');
+					console.log('%cTableau Href/Src : ','color:green');
+					console.table(tableauHrefContenu);
+					console.log('%c----------------------------------','color:purple');
 					// on affiche la reponse
 					console.log('il y a ' +nbrClasse+ ' objet(s) recurent avec la classe ' +test+ '! ');
+					console.log('%c===============================================','color:blue');
 					i++;
 
 				}
@@ -143,10 +176,11 @@ $(document).ready(function(){
 	*/
 
 		clickOnBtn('.contenuToCheck p');
-		clickOnBtn('a');
-		clickOnBtn('span');
+		clickOnBtn('.contenuToCheck a');
+		clickOnBtn('.contenuToCheck span');
 		clickOnBtn('.contenuToCheck div');
-		clickOnBtn('H2');
+		clickOnBtn('.contenuToCheck H2');
+		clickOnBtn('.contenuToCheck img');
 
 
 });

@@ -48,6 +48,7 @@ body section:nth-child(2) {
 	/* Ajout de la couleur au click */
 	.baliseSelection {
 		background-color: yellow!important; 
+		border: 0.3rem double orange!important;
 	}
 
 /**
@@ -74,12 +75,23 @@ body section:nth-child(2) {
 /**
 * Simulation de contenu pour developpement
 */
-.annonces {
+.contenuToCheck .annonces {
 	border: .1rem solid #000;
     margin-bottom: 1.5rem;
     border-radius: .6rem;
     padding: .9rem;
 }
-.annonces span { 
+.contenuToCheck .annonces span { 
 	font-size: .5em; color: red;
+}
+.contenuToCheck .lien {
+	display: block;
+}
+.contenuToCheck .image {
+	float: left;
+}
+.contenuToCheck .description {
+	display: inline-block;
+	width: 40rem;
+	height: 7rem;
 }
