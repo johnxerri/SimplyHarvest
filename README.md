@@ -15,3 +15,4 @@
   <li>[✘] 3 - Transformer le console.log() en .append pour avoir un visuel</li>
   <li>[✘] 4 - Recuperer le contenu du .append et le transformer en .json</li>
 </ul>
+![alt tag](https://github.com/johnxerri/SimplyHarvest/blob/master/img/83.png)
