@@ -52,6 +52,12 @@
 
 			<!-- Row milieu - colonne droite -->
 			<aside class="creationDesBlocks">
+
+				<div>
+					<!-- Bouton ADD -->
+					<!-- Bouton EXPORT JSON -->
+					<!-- (plus tard) Bouton SAVE IN BDD -->
+				</div>
 				
 			</aside>
 
