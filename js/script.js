@@ -78,9 +78,6 @@ $(document).ready(function(){
 						className = className.replace(' baliseSelection','');
 
 					}
-					console.log(className);
-
-					// className = className.replace(' baliseHover', '');
 					
 					// on compte l'occurence
 					var nbrClasse	= $('.contenuToCheck').find('.'+className).length; 
@@ -90,34 +87,46 @@ $(document).ready(function(){
 					var tableauTextContenu = [];
 					var tableauHrefContenu = [];
 
+					// On boucle sur le nbr de class recurente
 					for (var j = 0; j < nbrClasse; j++) 
 					{
 
 						// Recuperation du HTML :
 						// On recupere le HTML Parent
 						var baliseHtmlContenu = $('.contenuToCheck .'+className ).eq(j)[0].outerHTML;
+						// on efface la class pour l affichage
 						baliseHtmlContenu = baliseHtmlContenu.replace(' class="baliseSelection"','');
 
 						// SI on a recuperer la class Parent
 						if ( classNameParent == 1 ) {
-							// et pour chaque ligne
-							baliseHtmlContenu = baliseHtmlContenu.match(/<span>([\s\S]*?)<\/span>/g);
+							// et pour chaque ligne on recupere la balise cliqué dans le parent qui contient une
+							// .class (en plus c'est non-greedy ^_^)
+							var regexBalise = new RegExp('<'+balise+'>([\\s\\S]*?)</'+balise+'>', 'g');
+							baliseHtmlContenu = baliseHtmlContenu.match( regexBalise );
+							// on push la reponse dans le tableau HTML
 							tableauHtmlContenu.push( baliseHtmlContenu );
 						} else {
-							// baliseHtmlContenu = baliseHtmlContenu.replace(' baliseHover', '');
+							// on efface la class pour l affichage
 							baliseHtmlContenu = baliseHtmlContenu.replace(' baliseSelection','');
+							// on push la reponse dans le tableau HTML
 							tableauHtmlContenu.push( baliseHtmlContenu );
 						}
 						// =====================================================
 
 						// Recuperation du Text :
+						// On recupere le text de la .class
 						var baliseTextContenu = $('.contenuToCheck .'+className ).eq(j).text();
+
+						// SI on a recuperer la class Parent
 						if ( classNameParent == 1 ) {
+							// On remplace baliseTextContenu par le text de l enfant de la .class
 							baliseTextContenu = $('.contenuToCheck .'+className ).eq(j).children().text();
 						}
+						// SI aucun text n est récupéré
 						if ( baliseTextContenu == '' ) {
 							baliseTextContenu = 'Aucun text';
 						} 
+						// on push la reponse dans le tableau Text
 						tableauTextContenu.push( baliseTextContenu );
 						// =====================================================
 
@@ -127,11 +136,17 @@ $(document).ready(function(){
 						} else {
 							var baliseHrefContenu = $('.contenuToCheck .'+className ).eq(j).attr('href');
 						}
+
+						// SI aucun lien n est récupéré
+						if (baliseHrefContenu == undefined) {
+							baliseHrefContenu = 'Aucun lien';
+						}
+						// on push la reponse dans le tableau Href/Src
 						tableauHrefContenu.push( baliseHrefContenu );
 						// =====================================================
 					}
 
-					// Superbe affichage des résultats dans la console :
+					// Superbe affichage des résultats dans la console en attendant le .append() ^_^ :
 					console.log('%c===============================================','color:blue');
 					console.log('%cTableau HTML : ','color:green');
 					console.table(tableauHtmlContenu);
@@ -154,7 +169,7 @@ $(document).ready(function(){
 		};
 
 	/**
-	*	Appel de la fonction utilisateur
+	*	Appel de la fonction utilisateur ( a factoriser ;) )
 	*/
 
 		clickOnBtn('p');
