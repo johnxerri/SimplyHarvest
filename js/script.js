@@ -19,6 +19,8 @@ $(document).ready(function(){
 	*	Bouton de selection d'une autre balise
 	*/
 
+		// Pour l UX/UI je creer une variable pour eviter le cliqueur fou
+		// Si i = 0 Une instance peut etre lancer sinon il faut terminer l instance precedante ;)
 		var i = 0;
 
 		$('#resetBalise').click(function(e){
@@ -52,6 +54,7 @@ $(document).ready(function(){
 
 			$( '.contenuToCheck ' + balise ).click(function(){
 
+				// Si aucune instance n est lancer
 				if (i == 0) {
 
 					// on recupere la class du click
